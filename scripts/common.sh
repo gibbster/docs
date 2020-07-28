@@ -128,7 +128,7 @@ get_pr_for_commit() {
 # suffix to filter by (e.g., "pr" or "push").
 get_recent_buckets() {
     aws s3api list-buckets \
-        --query "reverse(sort_by(Buckets,&CreationDate))[:50].{id:Name,date:CreationDate}|[?starts_with(id,'$(origin_bucket_prefix)-${1}')]" \
+        --query "reverse(sort_by(Buckets,&CreationDate))[:100].{id:Name,date:CreationDate}|[?starts_with(id,'$(origin_bucket_prefix)-${1}')]" \
         --output json | jq -r '.[].id'
 }
 
