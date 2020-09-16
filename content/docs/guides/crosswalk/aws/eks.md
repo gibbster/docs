@@ -263,7 +263,7 @@ const vpc = new awsx.ec2.Vpc("my-vpc");
 const allVpcSubnets = vpc.privateSubnetIds.concat(vpc.publicSubnetIds);
 
 // Create an EKS cluster inside of the VPC.
-const cluster2 = new eks.Cluster("my-cluster", {
+const cluster = new eks.Cluster("my-cluster", {
     vpcId: vpc.id,
     subnetIds: allVpcSubnets,
     nodeAssociatePublicIpAddress: false,
